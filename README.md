@@ -2,6 +2,9 @@
 
 A new Flutter project.
 
+Juan Esteban Ladino
+Alejandro Jose Uribe
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
