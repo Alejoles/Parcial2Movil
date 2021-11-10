@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:loggy/loggy.dart';
 
 import '../models/weather_model.dart';
@@ -6,36 +7,34 @@ import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
 class WeatherClient {
-  //static const apiKey = "47581f99906ff83fe45a63f5be84bd10";
-  static const baseUrl =
-      'http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=';
+  //http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=";
+  static const baseUrl = 'http://api.openweathermap.org/data/2.5/weather?q=';
 
   final String apiKey;
-  WeatherClient(this.apiKey);
 
-  Future<List<WeatherItem>> getItems(String topic) async {
-    var uri = Uri.parse(baseUrl + apiKey);
+  final String cityName;
+  WeatherClient(this.apiKey, this.cityName);
 
+  Future<List<WeatherItem>> getItems() async {
+    var uri = Uri.parse(baseUrl + cityName + "&appid=" + apiKey);
     try {
-      final response = await http.get(uri).timeout(const Duration(seconds: 1));
+      final response = await http.get(uri).timeout(const Duration(seconds: 2));
+      //print(response.body);
       if (response.statusCode == 200) {
-        logInfo("Got code 200, great!");
+        print("Got code 200");
         var jsonResponse = convert.jsonDecode(response.body);
-        int itemCount = jsonResponse['response']['total'];
-        logInfo("We got $itemCount items");
+        var descripcion = (jsonResponse['weather'][0]['description']);
+        var temp = jsonResponse['main']['temp'];
+        print(jsonResponse['main']);
 
-        if (itemCount == 0) {
-          logError("get got nothing");
-          return [];
-        }
         List<WeatherItem> output = [];
+        //for (var item in jsonResponse['response']['results']){}
         return Future.value(output);
       } else {
         return Future.error([]);
       }
     } catch (e) {
-      logError('Client error Timeout');
-      return Future.error('Client error Timeout');
+      return Future.error('Error catch');
     }
   }
 }

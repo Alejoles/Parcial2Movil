@@ -11,7 +11,8 @@ class HomePage extends GetView<HomeController> {
   Widget build(BuildContext context) {
     double fullHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Container(
+        body: SingleChildScrollView(
+      child: Container(
         width: double.infinity,
         height: fullHeight,
         decoration: const BoxDecoration(
@@ -120,10 +121,17 @@ class HomePage extends GetView<HomeController> {
                   ],
                 ),
               ),
+              SizedBox(
+                height: 50,
+              ),
+              ElevatedButton(
+                  onPressed: () =>
+                      controller.prueba1("Bogota"), //TODO: user choice
+                  child: Text("data"))
             ],
           ),
         ),
       ),
-    );
+    ));
   }
 }
