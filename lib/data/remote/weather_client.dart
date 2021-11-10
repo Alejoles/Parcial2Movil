@@ -25,7 +25,9 @@ class WeatherClient {
         var jsonResponse = convert.jsonDecode(response.body);
         var descripcion = (jsonResponse['weather'][0]['description']);
         var temp = jsonResponse['main']['temp'];
-        print(jsonResponse['main']);
+        var feelsLike = (jsonResponse['main']['feels_like']);
+        var humidity = (jsonResponse['main']['humidity']);
+        var speed = (jsonResponse['wind']['speed']);
 
         List<WeatherItem> output = [];
         //for (var item in jsonResponse['response']['results']){}
