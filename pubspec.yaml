@@ -32,6 +32,8 @@ dependencies:
   get: ^4.3.8
   stylish_bottom_bar: ^0.0.5
   provider: ^6.0.0
+  http: ^0.13.3
+  loggy: ^2.0.1
 
 
   # The following adds the Cupertino Icons font to your application.
