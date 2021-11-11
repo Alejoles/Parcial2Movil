@@ -123,10 +123,7 @@ Widget buildTransaction(
   BuildContext context,
   WeatherModel transaction,
 ) {
-  final color = transaction.ciudad == "Bogota" ? Colors.red : Colors.green;
-  //final date = DateFormat.yMMMd().format(transaction.createdDate);
   final pais = transaction.pais.toString();
-  final amount = '\$' + transaction.mainTemp.toStringAsFixed(2);
 
   return Card(
     color: Colors.white,
@@ -138,11 +135,7 @@ Widget buildTransaction(
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
       ),
       subtitle: Text(pais),
-      trailing: Text(
-        amount,
-        style:
-            TextStyle(color: color, fontWeight: FontWeight.bold, fontSize: 16),
-      ),
+      trailing: Icon(Icons.search),
       children: [
         buildButtons(context, transaction),
       ],
@@ -165,35 +158,3 @@ Widget buildButtons(BuildContext context, WeatherModel transaction) => Row(
 void deleteTransaction(WeatherModel transaction) {
   transaction.delete();
 }
-
-/*
-class ElementoLista extends GetView<FavoriteController> {
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-        onTap: () => {print("hola1")},
-        child: Container(
-          height: 60,
-          margin: EdgeInsets.only(bottom: 20),
-          decoration: BoxDecoration(boxShadow: [
-            BoxShadow(blurRadius: 5, color: Colors.black, offset: Offset(0, 5)),
-          ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Icon(Icons.location_pin),
-                  Text("Ciudad - Pais")
-                ],
-              ),
-              IconButton(
-                  onPressed: () => {print("fav")}, icon: Icon(Icons.favorite))
-            ],
-          ),
-        ));
-  }
-}*/

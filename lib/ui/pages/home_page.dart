@@ -58,28 +58,28 @@ class HomePage extends GetView<HomeController> {
                         children: [
                           Column(
                             children: [
-                              const Icon(
-                                Icons.thermostat_outlined,
-                                size: 40,
+                              Image.asset(
+                                'lib/assets/thermometer.png',
+                                scale: 15,
                               ),
                               Text(controller.listaWeather[1].toString() + "°F")
                             ],
                           ),
                           Column(
                             children: [
-                              const Icon(
-                                Icons.cloud_circle_rounded,
-                                size: 40,
+                              Image.asset(
+                                'lib/assets/wind.png',
+                                scale: 15,
                               ),
                               Text(controller.listaWeather[4].toString() +
-                                  " km/h")
+                                  " mph")
                             ],
                           ),
                           Column(
                             children: [
-                              const Icon(
-                                Icons.water_outlined,
-                                size: 40,
+                              Image.asset(
+                                'lib/assets/humidity.png',
+                                scale: 15,
                               ),
                               Text(controller.listaWeather[3].toString() + "%")
                             ],
