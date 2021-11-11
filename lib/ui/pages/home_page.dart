@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:parcial2movil/controllers/home_controller.dart';
 
@@ -27,6 +28,21 @@ class HomePage extends GetView<HomeController> {
           child: SafeArea(
             child: Column(
               children: [
+                const SizedBox(height: 25),
+                const Text(
+                  "Clima Tact",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 35,
+                      fontWeight: FontWeight.bold,
+                      shadows: <Shadow>[
+                        Shadow(
+                          offset: Offset(3.0, 5.0),
+                          blurRadius: 10.0,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        )
+                      ]),
+                ),
                 const SizedBox(height: 25),
                 Container(
                   width: 300,
@@ -125,6 +141,8 @@ class HomePage extends GetView<HomeController> {
                       Container(
                         child: TextField(
                           controller: ciudadInput,
+                          decoration: const InputDecoration(
+                              hintText: "Ciudad ó latitud,longitud"),
                         ),
                         width: 200,
                       ),
@@ -136,15 +154,20 @@ class HomePage extends GetView<HomeController> {
                   ),
                 ),
                 const SizedBox(
-                  height: 50,
+                  height: 30,
                 ),
                 ElevatedButton(
-                    onPressed: () {
-                      controller.prueba1(ciudadInput.text);
-                      controller.favoriteIcon(true); //TODO: user choice
-                      iconChange = true;
-                    },
-                    child: Text("data"))
+                  onPressed: () {
+                    controller.prueba1(ciudadInput.text);
+                    controller.favoriteIcon(true); //TODO: user choice
+                    iconChange = true;
+                  },
+                  child: Text("Traer Data"),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.blueAccent[600],
+                      shape: const BeveledRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10)))),
+                )
               ],
             ),
           ),
