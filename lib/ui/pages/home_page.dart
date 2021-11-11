@@ -10,6 +10,12 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     double fullHeight = MediaQuery.of(context).size.height;
+    var descripcion = controller.listaWeather[0];
+    var temperatura = controller.listaWeather[1];
+    var feelsLike = controller.listaWeather[2];
+    var humidity = controller.listaWeather[3];
+    var velocidad = controller.listaWeather[4];
+
     return Scaffold(
         body: SingleChildScrollView(
       child: Container(
@@ -46,35 +52,35 @@ class HomePage extends GetView<HomeController> {
                         )
                       ],
                     ),
-                    const Text("Descripcion"),
+                    Text(descripcion.toString()),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Column(
-                          children: const [
-                            Icon(
+                          children: [
+                            const Icon(
                               Icons.thermostat_outlined,
                               size: 40,
                             ),
-                            Text("Temp")
+                            Text(temperatura.toString())
                           ],
                         ),
                         Column(
-                          children: const [
-                            Icon(
+                          children: [
+                            const Icon(
                               Icons.cloud_circle_rounded,
                               size: 40,
                             ),
-                            Text("Velocidad")
+                            Text(velocidad.toString())
                           ],
                         ),
                         Column(
-                          children: const [
-                            Icon(
+                          children: [
+                            const Icon(
                               Icons.water,
                               size: 40,
                             ),
-                            Text("Humedad")
+                            Text(humidity.toString())
                           ],
                         ),
                       ],
@@ -86,9 +92,9 @@ class HomePage extends GetView<HomeController> {
                           width: 30,
                         ),
                         Row(
-                          children: const [
-                            Icon(Icons.person),
-                            Text("Feels like"),
+                          children: [
+                            const Icon(Icons.person),
+                            Text(feelsLike.toString()),
                           ],
                         ),
                         IconButton(
@@ -125,8 +131,9 @@ class HomePage extends GetView<HomeController> {
                 height: 50,
               ),
               ElevatedButton(
-                  onPressed: () =>
-                      controller.prueba1("Bogota"), //TODO: user choice
+                  onPressed: () async {
+                    await controller.prueba1("Bogota"); //TODO: user choice
+                  },
                   child: Text("data"))
             ],
           ),

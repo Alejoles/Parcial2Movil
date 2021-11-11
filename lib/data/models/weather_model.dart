@@ -4,6 +4,8 @@ class WeatherItem {
   double? mainFeelsLike;
   int? mainHumidity;
   double? windSpeed;
+  String? ciudad;
+  String? pais;
 
   WeatherItem(
       {required this.weatherDescription,
