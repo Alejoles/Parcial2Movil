@@ -9,6 +9,8 @@ class HomePage extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    var iconChange = true;
+
     double fullHeight = MediaQuery.of(context).size.height;
     var ciudadInput = TextEditingController();
     return GetBuilder<HomeController>(builder: (controller) {
@@ -60,7 +62,7 @@ class HomePage extends GetView<HomeController> {
                                 Icons.thermostat_outlined,
                                 size: 40,
                               ),
-                              Text(controller.listaWeather[1].toString())
+                              Text(controller.listaWeather[1].toString() + "°F")
                             ],
                           ),
                           Column(
@@ -69,16 +71,17 @@ class HomePage extends GetView<HomeController> {
                                 Icons.cloud_circle_rounded,
                                 size: 40,
                               ),
-                              Text(controller.listaWeather[4].toString())
+                              Text(controller.listaWeather[4].toString() +
+                                  " km/h")
                             ],
                           ),
                           Column(
                             children: [
                               const Icon(
-                                Icons.water,
+                                Icons.water_outlined,
                                 size: 40,
                               ),
-                              Text(controller.listaWeather[3].toString())
+                              Text(controller.listaWeather[3].toString() + "%")
                             ],
                           ),
                         ],
@@ -92,12 +95,17 @@ class HomePage extends GetView<HomeController> {
                           Row(
                             children: [
                               const Icon(Icons.person),
-                              Text(controller.listaWeather[2].toString()),
+                              Text(
+                                  controller.listaWeather[2].toString() + "°F"),
                             ],
                           ),
                           IconButton(
-                              onPressed: () => {},
-                              icon: Icon(Icons.favorite_outline))
+                              onPressed: () => {
+                                    //controller.prueba1(ciudadInput.text),
+                                    iconChange = !iconChange,
+                                    controller.favoriteIcon(iconChange),
+                                  },
+                              icon: controller.fluticon)
                         ],
                       ),
                     ],
@@ -132,7 +140,9 @@ class HomePage extends GetView<HomeController> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      controller.prueba1(ciudadInput.text); //TODO: user choice
+                      controller.prueba1(ciudadInput.text);
+                      controller.favoriteIcon(true); //TODO: user choice
+                      iconChange = true;
                     },
                     child: Text("data"))
               ],
