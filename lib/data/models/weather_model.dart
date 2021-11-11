@@ -13,10 +13,10 @@ class WeatherItem {
       required this.windSpeed});
 
   WeatherItem.fromJson(Map<String, dynamic> json) {
-    weatherDescription = json['description'];
-    mainTemp = json['temp'];
-    mainFeelsLike = json['feels_like'];
-    mainHumidity = json['humidity'];
-    windSpeed = json['speed'];
+    weatherDescription = (json['weather'][0]['description']);
+    mainTemp = json['main']['temp'];
+    mainFeelsLike = json['main']['feels_like'];
+    mainHumidity = json['main']['humidity'];
+    windSpeed = json['wind']['speed'];
   }
 }

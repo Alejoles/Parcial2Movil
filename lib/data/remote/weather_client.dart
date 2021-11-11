@@ -23,13 +23,9 @@ class WeatherClient {
       if (response.statusCode == 200) {
         print("Got code 200");
         var jsonResponse = convert.jsonDecode(response.body);
-        var descripcion = (jsonResponse['weather'][0]['description']);
-        var temp = jsonResponse['main']['temp'];
-        var feelsLike = (jsonResponse['main']['feels_like']);
-        var humidity = (jsonResponse['main']['humidity']);
-        var speed = (jsonResponse['wind']['speed']);
 
         List<WeatherItem> output = [];
+        output.add(WeatherItem.fromJson(jsonResponse));
         //for (var item in jsonResponse['response']['results']){}
         return Future.value(output);
       } else {
