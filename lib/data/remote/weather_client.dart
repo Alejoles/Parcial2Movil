@@ -26,7 +26,6 @@ class WeatherClient {
 
         List<WeatherItem> output = [];
         output.add(WeatherItem.fromJson(jsonResponse));
-        //for (var item in jsonResponse['response']['results']){}
         return Future.value(output);
       } else {
         return Future.error([]);
