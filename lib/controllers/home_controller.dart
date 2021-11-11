@@ -8,18 +8,23 @@ class HomeController extends GetxController {
     "Temp",
     "Velocidad",
     "Humedad",
-    "Feels like"
+    "Feels like",
+    "Ciudad",
+    "Pais"
   ];
 
   Future prueba1(String cityName) async {
     List<WeatherItem> _regular = await DataRepository(cityName).getItems();
-    listaWeather = [];
+    listaWeather = [].obs;
     for (var item in _regular) {
       listaWeather.add(item.weatherDescription);
       listaWeather.add(item.mainTemp);
       listaWeather.add(item.mainFeelsLike);
       listaWeather.add(item.mainHumidity);
       listaWeather.add(item.windSpeed);
+      listaWeather.add(item.ciudad);
+      listaWeather.add(item.pais);
+      update();
     }
     update();
   }

@@ -15,6 +15,8 @@ class HomePage extends GetView<HomeController> {
     var feelsLike = controller.listaWeather[2];
     var humidity = controller.listaWeather[3];
     var velocidad = controller.listaWeather[4];
+    var ciudad = controller.listaWeather[5];
+    var pais = controller.listaWeather[6];
 
     return Scaffold(
         body: SingleChildScrollView(
@@ -44,10 +46,10 @@ class HomePage extends GetView<HomeController> {
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(Icons.location_pin),
+                      children: [
+                        const Icon(Icons.location_pin),
                         Text(
-                          "data",
+                          ciudad.toString() + ' - ' + pais.toString(),
                           style: TextStyle(fontSize: 20),
                         )
                       ],
@@ -132,7 +134,7 @@ class HomePage extends GetView<HomeController> {
               ),
               ElevatedButton(
                   onPressed: () async {
-                    await controller.prueba1("Bogota"); //TODO: user choice
+                    await controller.prueba1("Caracas"); //TODO: user choice
                   },
                   child: Text("data"))
             ],

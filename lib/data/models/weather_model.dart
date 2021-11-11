@@ -12,7 +12,9 @@ class WeatherItem {
       required this.mainTemp,
       required this.mainFeelsLike,
       required this.mainHumidity,
-      required this.windSpeed});
+      required this.windSpeed,
+      required this.ciudad,
+      required this.pais});
 
   WeatherItem.fromJson(Map<String, dynamic> json) {
     weatherDescription = json['weather'][0]['description'];
